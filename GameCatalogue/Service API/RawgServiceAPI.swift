@@ -17,13 +17,12 @@ class RawgServiceAPI{
             if let error = error {
                 completion(error, nil)
             } else if let data = data {
-                print(data)
                 do {
                     let decoder = JSONDecoder()
                     let searchResults = try decoder.decode(GamesModel.self, from: data)
                     completion(nil, searchResults.results)
                 } catch {
-                    print("decoding error: \(error.localizedDescription)")
+                    print("decoding error: \(error)")
                 }
             }
         }).resume()
@@ -39,8 +38,7 @@ class RawgServiceAPI{
                     let resultData = try decoder.decode(DetailGameModel.self, from: data)
                     completion(nil, resultData)
                 } catch {
-                    print("decoding error: \(error.localizedDescription)")
-                    print(error)
+                    print("decoding error: \(error)")
                 }
             }
         }).resume()

@@ -66,7 +66,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRp-eB-2Po" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="604.66666666666663"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eGp-Lx-zfh">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eGp-Lx-zfh">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="232" id="Tgu-Bv-rC6"/>
@@ -129,6 +129,10 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="O3A-b6-RDU" secondAttribute="bottom" id="XHG-V7-zGN"/>
+                                                            <constraint firstItem="O3A-b6-RDU" firstAttribute="top" secondItem="W4T-vQ-efG" secondAttribute="top" id="bnJ-yZ-Rat"/>
+                                                        </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn4-Ui-jAr">
                                                         <rect key="frame" x="0.0" y="22.333333333333371" width="343" height="1"/>
@@ -138,6 +142,9 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="vn4-Ui-jAr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="W4T-vQ-efG" secondAttribute="bottom" constant="2" id="kwc-hn-yX9"/>
+                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3oF-AV-cOg">
                                                 <rect key="frame" x="16" y="411.66666666666669" width="343" height="23.333333333333314"/>
@@ -354,6 +361,7 @@
                         <outlet property="platformsLabel" destination="JAL-3a-Quh" id="Aa0-zv-GPx"/>
                         <outlet property="publisherLabel" destination="njN-PP-pHm" id="I4t-fN-xKI"/>
                         <outlet property="ratingLabel" destination="NkE-Vx-TCB" id="68R-Th-mzz"/>
+                        <outlet property="releaseDateLabel" destination="SCK-1x-L5c" id="j43-oS-bfu"/>
                         <outlet property="systemRequirementLabel" destination="4RL-Ge-MJe" id="f2x-DZ-Qco"/>
                         <outlet property="titleLabel" destination="3qz-zo-iPG" id="jKO-bx-XFy"/>
                     </connections>

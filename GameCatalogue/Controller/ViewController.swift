@@ -56,39 +56,22 @@ extension ViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GamesCell", for: indexPath) as! GamesCell
         
         let game = games[indexPath.row]
-        let totalGenre = game.genres.count
-        let totalPlatforms = game.platforms.count
-        var nameGenre = ""
-        var namePlatform = ""
+
+        loadImageCell(game: game, forCell: cell)
+        
+        let platforms = game.platforms.map { (element) -> String in
+            return element.platform.name
+        }
+        
+        let genres = game.genres.map { (element) -> String in
+            return element.name
+        }
         
         cell.titleLabel.text = game.name
         cell.releaseDateLabel.text = "Release Date : "+game.released
-        
-        for number in 0...totalGenre-1 {
-            let genres = game.genres[number]
-            
-            if number == totalGenre-1 {
-                nameGenre += String("\(genres.name)")
-            }else{
-                nameGenre += String("\(genres.name), ")
-            }
-        }
-        
-        for numbers in 0...totalPlatforms-1 {
-            let platforms = game.platforms[numbers]
-            
-            if numbers == totalPlatforms-1 {
-                namePlatform += String("\(platforms.platform.name)")
-            }else{
-                namePlatform += String("\(platforms.platform.name), ")
-            }
-        }
-        
-        cell.genreLabel.text = nameGenre
+        cell.genreLabel.text = genres.joined(separator: ", ")
         cell.ratingLabel.text = "Rating: \(game.rating)"
-        cell.platformLabel.text = "Platforms: \(namePlatform)"
-        
-        loadImageCell(game: game, forCell: cell)
+        cell.platformLabel.text = "Platforms: \(platforms.joined(separator: ", "))"
         
         cell.gameImage.layer.cornerRadius = 20
         cell.gameImage.clipsToBounds = true
@@ -104,7 +87,7 @@ extension ViewController : UITableViewDataSource{
                     cell.gameImage.image = UIImage.init(data: imageData)
                 }
             }catch{
-                print("Memproses gambar bermasalah : \(error.localizedDescription)")
+                print("Memproses gambar bermasalah : \(error)")
             }
         }
     }
