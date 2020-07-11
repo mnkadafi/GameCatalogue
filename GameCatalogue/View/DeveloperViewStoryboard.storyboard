@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZ4-vR-gUR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Developers-->
+        <scene sceneID="HOY-Ke-pRp">
+            <objects>
+                <viewController storyboardIdentifier="developerViewStoryboard" id="1RK-cI-SzD" customClass="DeveloperViewController" customModule="GameCatalogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ajK-Vl-KTF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lao-RY-MYU">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uQb-kR-5IT">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1RK-cI-SzD" id="bK2-d4-U0L"/>
+                                    <outlet property="delegate" destination="1RK-cI-SzD" id="GOh-Pw-ZSc"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="us0-yN-4mP" firstAttribute="trailing" secondItem="lao-RY-MYU" secondAttribute="trailing" id="78z-hu-oBF"/>
+                            <constraint firstItem="us0-yN-4mP" firstAttribute="bottom" secondItem="lao-RY-MYU" secondAttribute="bottom" id="MRe-X0-BWh"/>
+                            <constraint firstItem="lao-RY-MYU" firstAttribute="leading" secondItem="us0-yN-4mP" secondAttribute="leading" id="dNZ-Hx-USP"/>
+                            <constraint firstItem="lao-RY-MYU" firstAttribute="top" secondItem="us0-yN-4mP" secondAttribute="top" id="vqk-ba-8mx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="us0-yN-4mP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Developer" image="code" id="kzM-tO-Keh">
+                        <inset key="imageInsets" minX="-5" minY="-8" maxX="-5" maxY="-10"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Developers" id="rYu-eO-WI4"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="developerCollection" destination="lao-RY-MYU" id="FSL-UA-4m1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DH4-Ks-sBU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.15942028985512" y="116.51785714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0zZ-S6-5Xz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yZ4-vR-gUR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Zf8-Hj-vrq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1RK-cI-SzD" kind="relationship" relationship="rootViewController" id="hyt-Ns-akN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEo-lA-ARO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71.014492753623188" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="code" width="16.5" height="16.5"/>
+    </resources>
+</document>
