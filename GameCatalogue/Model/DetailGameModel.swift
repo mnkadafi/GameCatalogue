@@ -24,18 +24,18 @@ struct DetailGameModel : Codable {
 
 struct DetailPlatform : Codable{
     var platform : DetailPlatformElement
-    var requirements : DetailRequirements
+//    var requirements : DetailRequirements
 }
 
 struct DetailPlatformElement : Codable {
     var id : Int
     var name : String
 }
-
-struct DetailRequirements : Codable {
-    var minimum : String
-    var recommended : String
-}
+//
+//struct DetailRequirements : Codable {
+//    var minimum : String
+//    var recommended : String
+//}
 
 struct DetailDeveloper: Codable {
     var id : Int
