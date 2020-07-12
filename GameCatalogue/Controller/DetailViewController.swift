@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
     func getGameDetail(){
         RawgServiceAPI.getDetailGames(id: selectData!.id) { (error, game) in
             if let error = error {
-                print("Error : \(error.localizedDescription)")
+                print("Error : \(error)")
             }else if let game = game{
                 self.detailView(detailGame: game)
             }
@@ -76,7 +76,7 @@ class DetailViewController: UIViewController {
     }
     
     func loadImageDetail(urlImage: DetailGameModel){
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             do{
                 let imageData = try Data.init(contentsOf: urlImage.background_image)
                 DispatchQueue.main.async {

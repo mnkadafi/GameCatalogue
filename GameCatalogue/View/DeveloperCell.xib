@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wuu-8t-UFA">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="258"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZ1-h1-Rj9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZ1-h1-Rj9">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="258"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="258" id="nhI-aC-Q4Y"/>
@@ -57,17 +57,25 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="g5M-h1-1rc"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNv-64-v8X">
+                                <rect key="frame" x="145.5" y="117" width="52" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SZ1-h1-Rj9" secondAttribute="trailing" id="6ie-Qu-wqQ"/>
                             <constraint firstItem="SZ1-h1-Rj9" firstAttribute="top" secondItem="wuu-8t-UFA" secondAttribute="top" id="94G-4A-jbU"/>
+                            <constraint firstItem="HNv-64-v8X" firstAttribute="centerY" secondItem="wuu-8t-UFA" secondAttribute="centerY" id="Bqp-jp-9Eq"/>
                             <constraint firstAttribute="bottom" secondItem="SZ1-h1-Rj9" secondAttribute="bottom" id="Tu5-is-h8d"/>
                             <constraint firstItem="SZ1-h1-Rj9" firstAttribute="leading" secondItem="wuu-8t-UFA" secondAttribute="leading" id="Wog-KA-KIn"/>
                             <constraint firstAttribute="trailing" secondItem="mBm-qH-k8C" secondAttribute="trailing" id="ZZS-6I-lQu"/>
                             <constraint firstAttribute="bottom" secondItem="mBm-qH-k8C" secondAttribute="bottom" id="asY-od-gX7"/>
                             <constraint firstItem="mBm-qH-k8C" firstAttribute="leading" secondItem="wuu-8t-UFA" secondAttribute="leading" id="dtc-ih-o1D"/>
                             <constraint firstItem="mBm-qH-k8C" firstAttribute="top" secondItem="wuu-8t-UFA" secondAttribute="top" constant="208" id="o2d-GY-xiv"/>
+                            <constraint firstItem="HNv-64-v8X" firstAttribute="centerX" secondItem="wuu-8t-UFA" secondAttribute="centerX" id="p9w-MF-gy4"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -82,6 +90,7 @@
             <connections>
                 <outlet property="containerCell" destination="wuu-8t-UFA" id="CwG-m5-l41"/>
                 <outlet property="imageDeveloper" destination="SZ1-h1-Rj9" id="oek-v0-5In"/>
+                <outlet property="nameDeveloper" destination="HNv-64-v8X" id="DpS-dp-90e"/>
                 <outlet property="popularLabel" destination="DYe-Vj-A3h" id="EBx-9j-hZE"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="96.428571428571431"/>

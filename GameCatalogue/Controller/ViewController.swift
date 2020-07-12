@@ -32,10 +32,10 @@ class ViewController: UIViewController {
     
     func defaultPage(){
         
-        RawgServiceAPI.getAllData(page_size: "3", completion: { (error, games) in
+        RawgServiceAPI.getAllData(page_size: 5, completion: { (error, games) in
             guard let games = games else {
-                let alertController = UIAlertController(title: "Error Occured", message: "\(error!.localizedDescription)", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                let alertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
                 
@@ -80,7 +80,7 @@ extension ViewController : UITableViewDataSource{
     }
     
     func loadImageCell(game: GameResults, forCell cell: GamesCell){
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             do{
                 let imageData = try Data.init(contentsOf: game.background_image)
                 DispatchQueue.main.async {

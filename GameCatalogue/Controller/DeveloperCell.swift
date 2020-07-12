@@ -11,6 +11,7 @@ import UIKit
 class DeveloperCell: UICollectionViewCell {
 
     @IBOutlet weak var containerCell: UIView!
+    @IBOutlet weak var nameDeveloper: UILabel!
     @IBOutlet weak var imageDeveloper: UIImageView!
     @IBOutlet weak var popularLabel: UILabel!
     override func awakeFromNib() {
