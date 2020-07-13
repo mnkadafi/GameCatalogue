@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tableGames.delegate = self
+        searchBarTable.delegate = self
         tableGames.dataSource = self
         tableGames.register(UINib(nibName: "GamesCell", bundle:nil), forCellReuseIdentifier : "GamesCell")
         defaultPage()
@@ -47,6 +48,30 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let searchText = searchBar.text else { return }
+        
+        if !searchText.isEmpty{
+            guard let encodedString = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+            
+            RawgServiceAPI.getDataByTitle(title: encodedString, completion: {(error, dataSearch) in
+                if let error = error {
+                    let alertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                } else if let dataSearch = dataSearch {
+                    self.games = dataSearch
+                }
+            })
+        }
+    }
+}
+
 extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return games.count
@@ -56,7 +81,7 @@ extension ViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GamesCell", for: indexPath) as! GamesCell
         
         let game = games[indexPath.row]
-
+    
         loadImageCell(game: game, forCell: cell)
         
         let platforms = game.platforms.map { (element) -> String in

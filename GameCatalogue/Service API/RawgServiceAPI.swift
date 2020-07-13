@@ -10,12 +10,29 @@ import Foundation
 
 class RawgServiceAPI{
     static let gamesURL = "https://api.rawg.io/api/games?page_size="
+    static let gamesSearchURL = "https://api.rawg.io/api/games?search="
     static let detailURL = "https://api.rawg.io/api/games/"
     static let developersURL = "https://api.rawg.io/api/developers?page_size="
     static let session = URLSession.shared
     
     static func getAllData(page_size: Int, completion: @escaping(Error?,[GameResults]?) -> Void){
         session.dataTask(with: URL(string: "\(gamesURL)\(page_size)")!, completionHandler: { (data,response,error) in
+            if let error = error {
+                completion(error, nil)
+            } else if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let gameResult = try decoder.decode(GamesModel.self, from: data)
+                    completion(nil, gameResult.results)
+                } catch {
+                    print("Decoding error: \(error)")
+                }
+            }
+        }).resume()
+    }
+    
+    static func getDataByTitle(title: String, completion: @escaping(Error?, [GameResults]?) -> Void){
+        session.dataTask(with: URL(string: "\(gamesSearchURL)\(title)")!, completionHandler: { (data,response,error) in
             if let error = error {
                 completion(error, nil)
             } else if let data = data {

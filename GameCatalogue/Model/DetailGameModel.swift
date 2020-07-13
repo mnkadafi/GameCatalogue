@@ -15,6 +15,7 @@ struct DetailGameModel : Codable {
     var metacritic : Int
     var released : String
     var background_image : URL
+    var website : URL
     var rating : Float
     var platforms : [DetailPlatform]
     var developers : [DetailDeveloper]
@@ -24,18 +25,12 @@ struct DetailGameModel : Codable {
 
 struct DetailPlatform : Codable{
     var platform : DetailPlatformElement
-//    var requirements : DetailRequirements
 }
 
 struct DetailPlatformElement : Codable {
     var id : Int
     var name : String
 }
-//
-//struct DetailRequirements : Codable {
-//    var minimum : String
-//    var recommended : String
-//}
 
 struct DetailDeveloper: Codable {
     var id : Int

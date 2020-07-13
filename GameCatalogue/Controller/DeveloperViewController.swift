@@ -55,11 +55,13 @@ extension DeveloperViewController : UICollectionViewDataSource{
 
         loadImageData(developers: developerData, forCell: cell)
     
-        cell.nameDeveloper.text = String(developerData.name)
-        cell.popularLabel.text = String(developerData.games_count)
-        
-        cell.containerCell.layer.cornerRadius = 20
-        cell.containerCell.clipsToBounds = true
+        DispatchQueue.main.async {
+            cell.nameDeveloper.text = String(developerData.name)
+            cell.popularLabel.text = String(developerData.games_count)
+            
+            cell.containerCell.layer.cornerRadius = 20
+            cell.containerCell.clipsToBounds = true
+        }
         
         return cell
     }

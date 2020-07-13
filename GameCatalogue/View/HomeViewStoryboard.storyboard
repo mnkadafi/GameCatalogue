@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-fW-aUO">
+                            <searchBar contentMode="redraw" placeholder="Search Game by Title" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-fW-aUO">
                                 <rect key="frame" x="0.0" y="140" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -274,7 +274,7 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System Requirement for PC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-Za-5Lg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-Za-5Lg">
                                                 <rect key="frame" x="16" y="540" width="343" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -362,8 +362,8 @@
                         <outlet property="publisherLabel" destination="njN-PP-pHm" id="I4t-fN-xKI"/>
                         <outlet property="ratingLabel" destination="NkE-Vx-TCB" id="68R-Th-mzz"/>
                         <outlet property="releaseDateLabel" destination="SCK-1x-L5c" id="j43-oS-bfu"/>
-                        <outlet property="systemRequirementLabel" destination="4RL-Ge-MJe" id="f2x-DZ-Qco"/>
                         <outlet property="titleLabel" destination="3qz-zo-iPG" id="jKO-bx-XFy"/>
+                        <outlet property="websiteLabel" destination="4RL-Ge-MJe" id="lwI-UL-yOL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2Y-TY-Ya3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
