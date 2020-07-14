@@ -12,6 +12,7 @@ class DeveloperViewController: UIViewController {
 
     @IBOutlet weak var developerCollection: UICollectionView!
     
+    
     var developers = [DeveloperElement](){
         didSet{
             DispatchQueue.main.async {
@@ -29,7 +30,7 @@ class DeveloperViewController: UIViewController {
     }
     
     func defaultDevelopers(){
-        RawgServiceAPI.getAllDevelopers(page_size: 5, completion: { (error, developerdata) in
+        RawgServiceAPI.getAllDevelopers(completion: { (error, developerdata) in
             if let error = error{
                 let alertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -57,6 +58,7 @@ extension DeveloperViewController : UICollectionViewDataSource{
     
         DispatchQueue.main.async {
             cell.nameDeveloper.text = String(developerData.name)
+            cell.nameDeveloper.attributedText = underlineText(keyword: developerData.name)
             cell.popularLabel.text = String(developerData.games_count)
             
             cell.containerCell.layer.cornerRadius = 20

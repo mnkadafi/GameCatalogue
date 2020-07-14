@@ -27,5 +27,14 @@ extension String {
     }
 }
 
+func underlineText(keyword: String) -> NSAttributedString{
+    let attributedString = NSMutableAttributedString.init(string: "\(keyword)")
+    attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range:
+        NSRange.init(location: 0, length: attributedString.length));
+    
+    return attributedString
+}
 
-
+extension LosslessStringConvertible {
+    var string: String { .init(self) }
+}

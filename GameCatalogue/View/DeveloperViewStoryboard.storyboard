@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lao-RY-MYU">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uQb-kR-5IT">
                                     <size key="itemSize" width="128" height="128"/>
@@ -36,7 +36,7 @@
                             <constraint firstItem="us0-yN-4mP" firstAttribute="trailing" secondItem="lao-RY-MYU" secondAttribute="trailing" id="78z-hu-oBF"/>
                             <constraint firstItem="us0-yN-4mP" firstAttribute="bottom" secondItem="lao-RY-MYU" secondAttribute="bottom" id="MRe-X0-BWh"/>
                             <constraint firstItem="lao-RY-MYU" firstAttribute="leading" secondItem="us0-yN-4mP" secondAttribute="leading" id="dNZ-Hx-USP"/>
-                            <constraint firstItem="lao-RY-MYU" firstAttribute="top" secondItem="us0-yN-4mP" secondAttribute="top" id="vqk-ba-8mx"/>
+                            <constraint firstItem="lao-RY-MYU" firstAttribute="top" secondItem="us0-yN-4mP" secondAttribute="top" constant="20" id="vqk-ba-8mx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="us0-yN-4mP"/>
                     </view>

@@ -15,9 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search Game by Title" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-fW-aUO">
+                            <searchBar contentMode="redraw" placeholder="Search Game" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-fW-aUO">
                                 <rect key="frame" x="0.0" y="140" width="375" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mw2-F7-mpI">
                                 <rect key="frame" x="0.0" y="196" width="375" height="533"/>
@@ -72,7 +79,7 @@
                                                     <constraint firstAttribute="height" constant="232" id="Tgu-Bv-rC6"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qz-zo-iPG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qz-zo-iPG">
                                                 <rect key="frame" x="16" y="247.00000000000003" width="343" height="26.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="textColor"/>

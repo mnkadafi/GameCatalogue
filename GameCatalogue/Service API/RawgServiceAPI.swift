@@ -9,14 +9,15 @@
 import Foundation
 
 class RawgServiceAPI{
-    static let gamesURL = "https://api.rawg.io/api/games?page_size="
-    static let gamesSearchURL = "https://api.rawg.io/api/games?search="
-    static let detailURL = "https://api.rawg.io/api/games/"
-    static let developersURL = "https://api.rawg.io/api/developers?page_size="
+    static let baseURL = "https://api.rawg.io"
+    static let gamesPathQuery = baseURL+"/api/games?page_size="
+    static let searchPathQuery = baseURL+"/api/games?search="
+    static let detailPathQuery = baseURL+"/api/games/"
+    static let developerPathQuery = baseURL+"/api/developers"
     static let session = URLSession.shared
     
     static func getAllData(page_size: Int, completion: @escaping(Error?,[GameResults]?) -> Void){
-        session.dataTask(with: URL(string: "\(gamesURL)\(page_size)")!, completionHandler: { (data,response,error) in
+        session.dataTask(with: URL(string: "\(gamesPathQuery)\(page_size)")!, completionHandler: { (data,response,error) in
             if let error = error {
                 completion(error, nil)
             } else if let data = data {
@@ -32,7 +33,7 @@ class RawgServiceAPI{
     }
     
     static func getDataByTitle(title: String, completion: @escaping(Error?, [GameResults]?) -> Void){
-        session.dataTask(with: URL(string: "\(gamesSearchURL)\(title)")!, completionHandler: { (data,response,error) in
+        session.dataTask(with: URL(string: "\(searchPathQuery)\(title)")!, completionHandler: { (data,response,error) in
             if let error = error {
                 completion(error, nil)
             } else if let data = data {
@@ -48,7 +49,7 @@ class RawgServiceAPI{
     }
     
     static func getDetailGames(id: Int, completion: @escaping(Error?,DetailGameModel?) -> Void){
-        session.dataTask(with: URL(string: "\(detailURL)\(id)")!, completionHandler: { (data,response,error) in
+        session.dataTask(with: URL(string: "\(detailPathQuery)\(id)")!, completionHandler: { (data,response,error) in
             if let error = error {
                 completion(error, nil)
             } else if let data = data {
@@ -63,8 +64,8 @@ class RawgServiceAPI{
         }).resume()
     }
     
-    static func getAllDevelopers(page_size : Int, completion : @escaping(Error?, [DeveloperElement]?) -> Void){
-        session.dataTask(with: URL(string: "\(developersURL)\(page_size)")!, completionHandler: { (data, response, error) in
+    static func getAllDevelopers(completion : @escaping(Error?, [DeveloperElement]?) -> Void){
+        session.dataTask(with: URL(string: "\(developerPathQuery)")!, completionHandler: { (data, response, error) in
             if let error = error {
                 completion(error, nil)
             }else if let data = data {

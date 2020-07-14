@@ -35,11 +35,7 @@ class ViewController: UIViewController {
         
         RawgServiceAPI.getAllData(page_size: 5, completion: { (error, games) in
             guard let games = games else {
-                let alertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
-                
+                self.alertError(message: error!)
                 return
             }
             
@@ -58,17 +54,19 @@ extension ViewController: UISearchBarDelegate{
             
             RawgServiceAPI.getDataByTitle(title: encodedString, completion: {(error, dataSearch) in
                 if let error = error {
-                    let alertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alertController.addAction(okAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    
+                    self.alertError(message: error)
                     return
                 } else if let dataSearch = dataSearch {
                     self.games = dataSearch
                 }
             })
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        searchBar.text = ""
+        defaultPage()
     }
 }
 
@@ -81,23 +79,23 @@ extension ViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GamesCell", for: indexPath) as! GamesCell
         
         let game = games[indexPath.row]
-    
+
         loadImageCell(game: game, forCell: cell)
         
-        let platforms = game.platforms.map { (element) -> String in
-            return element.platform.name
+        let platforms = game.platforms!.map { (element) -> String in
+            return element.platform.name!
         }
         
-        let genres = game.genres.map { (element) -> String in
+        let genres = game.genres!.map { (element) -> String in
             return element.name
         }
+
         
         cell.titleLabel.text = game.name
-        cell.releaseDateLabel.text = "Release Date : "+game.released
+        cell.releaseDateLabel.text = "Release Date : \(String(describing: game.released!))"
         cell.genreLabel.text = genres.joined(separator: ", ")
-        cell.ratingLabel.text = "Rating: \(game.rating)"
+        cell.ratingLabel.text = "Rating: " + String(game.rating!.string)
         cell.platformLabel.text = "Platforms: \(platforms.joined(separator: ", "))"
-        
         cell.gameImage.layer.cornerRadius = 20
         cell.gameImage.clipsToBounds = true
         
@@ -106,8 +104,14 @@ extension ViewController : UITableViewDataSource{
     
     func loadImageCell(game: GameResults, forCell cell: GamesCell){
         DispatchQueue.global().async {
+            guard game.background_image != nil else {
+                DispatchQueue.main.async{
+                    cell.gameImage.image = UIImage(named: "no_image.png")
+                }
+                return
+            }
             do{
-                let imageData = try Data.init(contentsOf: game.background_image)
+                let imageData = try Data.init(contentsOf: game.background_image!)
                 DispatchQueue.main.async {
                     cell.gameImage.image = UIImage.init(data: imageData)
                 }
@@ -115,6 +119,13 @@ extension ViewController : UITableViewDataSource{
                 print("Memproses gambar bermasalah : \(error)")
             }
         }
+    }
+    
+    func alertError(message: Error){
+        let alertController = UIAlertController(title: "Error", message: "\(String(describing: message))", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

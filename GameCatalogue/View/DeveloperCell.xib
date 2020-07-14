@@ -58,12 +58,12 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNv-64-v8X">
-                                <rect key="frame" x="149.5" y="118.5" width="44.5" height="21.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="208"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="shadowColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                         </subviews>
@@ -71,14 +71,16 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SZ1-h1-Rj9" secondAttribute="trailing" id="6ie-Qu-wqQ"/>
                             <constraint firstItem="SZ1-h1-Rj9" firstAttribute="top" secondItem="wuu-8t-UFA" secondAttribute="top" id="94G-4A-jbU"/>
-                            <constraint firstItem="HNv-64-v8X" firstAttribute="centerY" secondItem="wuu-8t-UFA" secondAttribute="centerY" id="Bqp-jp-9Eq"/>
+                            <constraint firstAttribute="trailing" secondItem="HNv-64-v8X" secondAttribute="trailing" id="AM3-CT-Jk5"/>
+                            <constraint firstItem="HNv-64-v8X" firstAttribute="top" secondItem="wuu-8t-UFA" secondAttribute="top" id="JJc-2p-bCa"/>
+                            <constraint firstItem="HNv-64-v8X" firstAttribute="leading" secondItem="wuu-8t-UFA" secondAttribute="leading" id="SIZ-jX-NEZ"/>
                             <constraint firstAttribute="bottom" secondItem="SZ1-h1-Rj9" secondAttribute="bottom" id="Tu5-is-h8d"/>
                             <constraint firstItem="SZ1-h1-Rj9" firstAttribute="leading" secondItem="wuu-8t-UFA" secondAttribute="leading" id="Wog-KA-KIn"/>
                             <constraint firstAttribute="trailing" secondItem="mBm-qH-k8C" secondAttribute="trailing" id="ZZS-6I-lQu"/>
                             <constraint firstAttribute="bottom" secondItem="mBm-qH-k8C" secondAttribute="bottom" id="asY-od-gX7"/>
                             <constraint firstItem="mBm-qH-k8C" firstAttribute="leading" secondItem="wuu-8t-UFA" secondAttribute="leading" id="dtc-ih-o1D"/>
                             <constraint firstItem="mBm-qH-k8C" firstAttribute="top" secondItem="wuu-8t-UFA" secondAttribute="top" constant="208" id="o2d-GY-xiv"/>
-                            <constraint firstItem="HNv-64-v8X" firstAttribute="centerX" secondItem="wuu-8t-UFA" secondAttribute="centerX" id="p9w-MF-gy4"/>
+                            <constraint firstItem="mBm-qH-k8C" firstAttribute="top" secondItem="HNv-64-v8X" secondAttribute="bottom" id="zXu-WQ-EXU"/>
                         </constraints>
                     </view>
                 </subviews>
