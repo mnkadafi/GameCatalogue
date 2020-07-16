@@ -31,14 +31,11 @@ class DeveloperViewController: UIViewController {
     
     func defaultDevelopers(){
         RawgServiceAPI.getAllDevelopers(completion: { (error, developerdata) in
-            if let error = error{
-                let alertController = UIAlertController(title: "Error", message: "\(String(describing: error))", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
-            }else if let developerdata = developerdata{
-                self.developers = developerdata
+            guard let developerdata = developerdata else{
+                return
             }
+            
+            self.developers = developerdata
         })
     }
     
@@ -62,7 +59,6 @@ extension DeveloperViewController : UICollectionViewDataSource{
             cell.popularLabel.text = String(developerData.games_count)
             
             cell.containerCell.layer.cornerRadius = 20
-            cell.containerCell.clipsToBounds = true
         }
         
         return cell

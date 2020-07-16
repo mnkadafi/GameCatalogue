@@ -15,18 +15,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search Game" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-fW-aUO">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oi-oP-Glg">
                                 <rect key="frame" x="0.0" y="140" width="375" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mw2-F7-mpI">
+                                <subviews>
+                                    <searchBar contentMode="redraw" text="" placeholder="Search Game" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be7-fW-aUO">
+                                        <rect key="frame" x="16" y="0.0" width="343" height="56"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Be7-fW-aUO" firstAttribute="leading" secondItem="1oi-oP-Glg" secondAttribute="leading" constant="16" id="YA9-j0-3Cu"/>
+                                    <constraint firstAttribute="trailing" secondItem="Be7-fW-aUO" secondAttribute="trailing" constant="16" id="qUb-42-4hM"/>
+                                    <constraint firstItem="Be7-fW-aUO" firstAttribute="top" secondItem="1oi-oP-Glg" secondAttribute="top" id="qZd-V8-6j2"/>
+                                    <constraint firstAttribute="bottom" secondItem="Be7-fW-aUO" secondAttribute="bottom" id="qc6-sj-QWm"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mw2-F7-mpI">
                                 <rect key="frame" x="0.0" y="196" width="375" height="533"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -35,15 +47,15 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Be7-fW-aUO" firstAttribute="trailing" secondItem="mQs-dO-kos" secondAttribute="trailing" id="Gka-Hi-u6P"/>
+                            <constraint firstItem="1oi-oP-Glg" firstAttribute="top" secondItem="mQs-dO-kos" secondAttribute="top" id="0PV-oW-PTH"/>
                             <constraint firstItem="mQs-dO-kos" firstAttribute="bottom" secondItem="mw2-F7-mpI" secondAttribute="bottom" id="KbQ-Bu-k1q"/>
-                            <constraint firstItem="mQs-dO-kos" firstAttribute="trailing" secondItem="mw2-F7-mpI" secondAttribute="trailing" id="L1r-nv-csD"/>
-                            <constraint firstItem="mw2-F7-mpI" firstAttribute="leading" secondItem="mQs-dO-kos" secondAttribute="leading" id="XZx-CR-Wyj"/>
-                            <constraint firstItem="Be7-fW-aUO" firstAttribute="top" secondItem="mQs-dO-kos" secondAttribute="top" id="qyn-as-y6A"/>
-                            <constraint firstItem="Be7-fW-aUO" firstAttribute="leading" secondItem="mQs-dO-kos" secondAttribute="leading" id="v22-Ws-9Zw"/>
-                            <constraint firstItem="mw2-F7-mpI" firstAttribute="top" secondItem="Be7-fW-aUO" secondAttribute="bottom" id="vPq-hB-0Wf"/>
+                            <constraint firstAttribute="trailing" secondItem="mw2-F7-mpI" secondAttribute="trailing" id="L1r-nv-csD"/>
+                            <constraint firstItem="mw2-F7-mpI" firstAttribute="top" secondItem="1oi-oP-Glg" secondAttribute="bottom" id="MLm-Qa-FrJ"/>
+                            <constraint firstItem="1oi-oP-Glg" firstAttribute="leading" secondItem="mQs-dO-kos" secondAttribute="leading" id="ROk-lu-1er"/>
+                            <constraint firstItem="mw2-F7-mpI" firstAttribute="leading" secondItem="z4X-ph-cB0" secondAttribute="leading" id="XZx-CR-Wyj"/>
+                            <constraint firstItem="1oi-oP-Glg" firstAttribute="trailing" secondItem="mQs-dO-kos" secondAttribute="trailing" id="mmg-OB-npO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mQs-dO-kos"/>
                     </view>
@@ -57,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqV-8O-DqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4444" y="979"/>
+            <point key="canvasLocation" x="4444" y="978.32512315270935"/>
         </scene>
         <!--Detail Game-->
         <scene sceneID="3wK-J2-Sec">
@@ -352,9 +364,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZLv-Qf-5DV" firstAttribute="bottom" secondItem="rON-ak-IHc" secondAttribute="bottom" id="1Lr-DA-j6E"/>
-                            <constraint firstItem="ZLv-Qf-5DV" firstAttribute="trailing" secondItem="rON-ak-IHc" secondAttribute="trailing" id="JVk-a4-DE4"/>
+                            <constraint firstItem="ZLv-Qf-5DV" firstAttribute="trailing" secondItem="fTS-rg-HCG" secondAttribute="trailing" id="JVk-a4-DE4"/>
                             <constraint firstItem="ZLv-Qf-5DV" firstAttribute="top" secondItem="rON-ak-IHc" secondAttribute="top" id="il6-OT-M5n"/>
-                            <constraint firstItem="ZLv-Qf-5DV" firstAttribute="leading" secondItem="rON-ak-IHc" secondAttribute="leading" id="lcK-v6-c7w"/>
+                            <constraint firstItem="ZLv-Qf-5DV" firstAttribute="leading" secondItem="fTS-rg-HCG" secondAttribute="leading" id="lcK-v6-c7w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rON-ak-IHc"/>
                     </view>

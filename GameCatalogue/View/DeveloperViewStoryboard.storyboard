@@ -15,28 +15,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lao-RY-MYU">
-                                <rect key="frame" x="0.0" y="160" width="414" height="653"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-Gd-VdQ" userLabel="ViewTop">
+                                <rect key="frame" x="0.0" y="140" width="414" height="20"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uQb-kR-5IT">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="1RK-cI-SzD" id="bK2-d4-U0L"/>
-                                    <outlet property="delegate" destination="1RK-cI-SzD" id="GOh-Pw-ZSc"/>
-                                </connections>
-                            </collectionView>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdH-9s-oVp">
+                                <rect key="frame" x="0.0" y="160" width="414" height="653"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lao-RY-MYU">
+                                        <rect key="frame" x="16" y="0.0" width="382" height="653"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="uQb-kR-5IT">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="1RK-cI-SzD" id="bK2-d4-U0L"/>
+                                            <outlet property="delegate" destination="1RK-cI-SzD" id="GOh-Pw-ZSc"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lao-RY-MYU" secondAttribute="bottom" id="3hi-9o-eBV"/>
+                                    <constraint firstAttribute="trailing" secondItem="lao-RY-MYU" secondAttribute="trailing" constant="16" id="6po-jj-LMo"/>
+                                    <constraint firstItem="lao-RY-MYU" firstAttribute="top" secondItem="AdH-9s-oVp" secondAttribute="top" id="ZVy-CH-l9d"/>
+                                    <constraint firstItem="lao-RY-MYU" firstAttribute="leading" secondItem="AdH-9s-oVp" secondAttribute="leading" constant="16" id="ddq-Gy-VRG"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="us0-yN-4mP" firstAttribute="trailing" secondItem="lao-RY-MYU" secondAttribute="trailing" id="78z-hu-oBF"/>
-                            <constraint firstItem="us0-yN-4mP" firstAttribute="bottom" secondItem="lao-RY-MYU" secondAttribute="bottom" id="MRe-X0-BWh"/>
-                            <constraint firstItem="lao-RY-MYU" firstAttribute="leading" secondItem="us0-yN-4mP" secondAttribute="leading" id="dNZ-Hx-USP"/>
-                            <constraint firstItem="lao-RY-MYU" firstAttribute="top" secondItem="us0-yN-4mP" secondAttribute="top" constant="20" id="vqk-ba-8mx"/>
+                            <constraint firstItem="AdH-9s-oVp" firstAttribute="top" secondItem="YhJ-Gd-VdQ" secondAttribute="bottom" id="8Vk-pS-10d"/>
+                            <constraint firstItem="us0-yN-4mP" firstAttribute="bottom" secondItem="AdH-9s-oVp" secondAttribute="bottom" id="H6N-Se-FCE"/>
+                            <constraint firstItem="AdH-9s-oVp" firstAttribute="leading" secondItem="ajK-Vl-KTF" secondAttribute="leading" id="O59-hj-MZm"/>
+                            <constraint firstItem="YhJ-Gd-VdQ" firstAttribute="top" secondItem="us0-yN-4mP" secondAttribute="top" id="bO2-cl-1z7"/>
+                            <constraint firstItem="AdH-9s-oVp" firstAttribute="trailing" secondItem="ajK-Vl-KTF" secondAttribute="trailing" id="e2d-LH-15M"/>
+                            <constraint firstItem="YhJ-Gd-VdQ" firstAttribute="trailing" secondItem="ajK-Vl-KTF" secondAttribute="trailing" id="jzJ-vY-M5A"/>
+                            <constraint firstItem="YhJ-Gd-VdQ" firstAttribute="leading" secondItem="ajK-Vl-KTF" secondAttribute="leading" id="lKN-zI-zcm"/>
+                            <constraint firstItem="AdH-9s-oVp" firstAttribute="top" secondItem="YhJ-Gd-VdQ" secondAttribute="top" constant="20" id="tBA-XL-V84"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="us0-yN-4mP"/>
                     </view>

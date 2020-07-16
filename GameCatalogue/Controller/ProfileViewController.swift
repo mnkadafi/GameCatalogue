@@ -19,16 +19,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageProfile.layer.cornerRadius = 10
-        imageProfile.clipsToBounds = true
-        
+        imageProfile.layer.cornerRadius = 15
         viewBelajarAkademi.layer.cornerRadius = 10
-        viewBelajarAkademi.clipsToBounds = true
-        
         viewMemenangkanChallange.layer.cornerRadius = 10
-        viewMemenangkanChallange.clipsToBounds = true
-        
         viewMenghadiriEvent.layer.cornerRadius = 10
-        viewMenghadiriEvent.clipsToBounds = true
+        
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

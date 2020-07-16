@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     public var withoutHtml: String {

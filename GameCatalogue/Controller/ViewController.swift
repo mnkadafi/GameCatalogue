@@ -33,9 +33,8 @@ class ViewController: UIViewController {
     
     func defaultPage(){
         
-        RawgServiceAPI.getAllData(page_size: 5, completion: { (error, games) in
-            guard let games = games else {
-                self.alertError(message: error!)
+        RawgServiceAPI.getAllData(page_size: 10, completion: { (error, games) in
+            guard let games = games else{
                 return
             }
             
@@ -53,12 +52,11 @@ extension ViewController: UISearchBarDelegate{
             guard let encodedString = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
             
             RawgServiceAPI.getDataByTitle(title: encodedString, completion: {(error, dataSearch) in
-                if let error = error {
-                    self.alertError(message: error)
+                guard let dataSearch = dataSearch else{
                     return
-                } else if let dataSearch = dataSearch {
-                    self.games = dataSearch
                 }
+                
+                self.games = dataSearch
             })
         }
     }
@@ -66,7 +64,9 @@ extension ViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
         searchBar.text = ""
-        defaultPage()
+        if searchBar.text != nil{
+            defaultPage()
+        }
     }
 }
 
@@ -92,12 +92,12 @@ extension ViewController : UITableViewDataSource{
 
         
         cell.titleLabel.text = game.name
-        cell.releaseDateLabel.text = "Release Date : \(String(describing: game.released!))"
+        cell.releaseDateLabel.text = "Release Date : \(game.released!)"
         cell.genreLabel.text = genres.joined(separator: ", ")
-        cell.ratingLabel.text = "Rating: " + String(game.rating!.string)
+        cell.ratingLabel.text = "Rating: \(game.rating!.string)"
         cell.platformLabel.text = "Platforms: \(platforms.joined(separator: ", "))"
+        
         cell.gameImage.layer.cornerRadius = 20
-        cell.gameImage.clipsToBounds = true
         
         return cell
     }

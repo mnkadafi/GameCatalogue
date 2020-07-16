@@ -33,11 +33,11 @@ class DetailViewController: UIViewController {
     
     func getGameDetail(){
         RawgServiceAPI.getDetailGames(id: selectData!.id) { (error, game) in
-            if let error = error {
-                print("Error : \(error)")
-            }else if let game = game{
-                self.detailView(detailGame: game)
+            guard let game = game else{
+                return
             }
+            
+            self.detailView(detailGame: game)
         }
     }
     

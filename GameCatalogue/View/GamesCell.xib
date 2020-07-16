@@ -75,6 +75,7 @@
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="V5c-W6-S8D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2qK-Ed-OaZ"/>
                     <constraint firstItem="2xn-kZ-gkw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4CL-N5-uYR"/>

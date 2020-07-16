@@ -225,38 +225,40 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Kcg-CK-pZS" secondAttribute="trailing" id="7QK-Rb-hPo"/>
                                             <constraint firstItem="Kcg-CK-pZS" firstAttribute="leading" secondItem="Z06-ly-NhB" secondAttribute="leading" id="Ckd-Or-xSB"/>
+                                            <constraint firstAttribute="bottom" secondItem="Kcg-CK-pZS" secondAttribute="bottom" constant="20" id="NE5-E4-UnW"/>
                                             <constraint firstItem="2gQ-Pz-bhH" firstAttribute="leading" secondItem="Z06-ly-NhB" secondAttribute="leading" id="l3P-NZ-5Q9"/>
                                             <constraint firstItem="Kcg-CK-pZS" firstAttribute="top" secondItem="2gQ-Pz-bhH" secondAttribute="bottom" id="lAe-OI-PdQ"/>
                                             <constraint firstAttribute="trailing" secondItem="2gQ-Pz-bhH" secondAttribute="trailing" id="nhG-Dx-mUy"/>
                                             <constraint firstItem="2gQ-Pz-bhH" firstAttribute="top" secondItem="Z06-ly-NhB" secondAttribute="top" id="ppP-aO-Ekg"/>
-                                            <constraint firstAttribute="bottom" secondItem="Kcg-CK-pZS" secondAttribute="bottom" constant="20" id="rf9-K6-1ac"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Z06-ly-NhB" secondAttribute="trailing" id="2xd-PD-wsW"/>
                                     <constraint firstItem="Z06-ly-NhB" firstAttribute="width" secondItem="CHt-h9-p9d" secondAttribute="width" id="NNr-X6-iWe"/>
                                     <constraint firstItem="Z06-ly-NhB" firstAttribute="top" secondItem="CHt-h9-p9d" secondAttribute="top" id="OCW-7g-Igm"/>
                                     <constraint firstItem="Z06-ly-NhB" firstAttribute="leading" secondItem="CHt-h9-p9d" secondAttribute="leading" id="ehG-5C-AVr"/>
                                     <constraint firstItem="Z06-ly-NhB" firstAttribute="height" secondItem="CHt-h9-p9d" secondAttribute="height" priority="250" id="gAg-zF-nEX"/>
-                                    <constraint firstAttribute="bottom" secondItem="Z06-ly-NhB" secondAttribute="bottom" id="iJ9-Op-mCW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Z06-ly-NhB" secondAttribute="bottom" id="vgd-zx-bxI"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CHt-h9-p9d" firstAttribute="bottom" secondItem="95A-5n-wy1" secondAttribute="bottom" id="3i6-My-CIe"/>
-                            <constraint firstItem="CHt-h9-p9d" firstAttribute="leading" secondItem="95A-5n-wy1" secondAttribute="leading" id="Twu-lj-sUe"/>
-                            <constraint firstItem="CHt-h9-p9d" firstAttribute="trailing" secondItem="95A-5n-wy1" secondAttribute="trailing" id="cmF-XU-RE7"/>
+                            <constraint firstItem="CHt-h9-p9d" firstAttribute="leading" secondItem="tvc-nr-r0G" secondAttribute="leading" id="Twu-lj-sUe"/>
+                            <constraint firstItem="CHt-h9-p9d" firstAttribute="trailing" secondItem="tvc-nr-r0G" secondAttribute="trailing" id="cmF-XU-RE7"/>
                             <constraint firstItem="CHt-h9-p9d" firstAttribute="top" secondItem="95A-5n-wy1" secondAttribute="top" id="fZo-BB-EFv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="95A-5n-wy1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="nBh-2R-ckx"/>
-                    <navigationItem key="navigationItem" title="Profile" id="5vb-vA-WOB"/>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="5vb-vA-WOB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageProfile" destination="ti9-LW-QuC" id="MY7-S7-UlN"/>
