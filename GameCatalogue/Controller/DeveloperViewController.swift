@@ -17,6 +17,7 @@ class DeveloperViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.developerCollection.reloadData()
+                self.removeLoadingScreen()
             }
         }
     }
@@ -26,6 +27,7 @@ class DeveloperViewController: UIViewController {
         
         developerCollection.dataSource = self
         developerCollection.register(UINib(nibName: "DeveloperCell", bundle:nil), forCellWithReuseIdentifier : "DeveloperCell")
+        setLoadingScreen()
         defaultDevelopers()
     }
     
@@ -47,21 +49,21 @@ extension DeveloperViewController : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DeveloperCell", for: indexPath) as! DeveloperCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DeveloperCell", for: indexPath) as? DeveloperCell
         
         let developerData = developers[indexPath.row]
 
-        loadImageData(developers: developerData, forCell: cell)
+        loadImageData(developers: developerData, forCell: cell!)
     
         DispatchQueue.main.async {
-            cell.nameDeveloper.text = String(developerData.name)
-            cell.nameDeveloper.attributedText = underlineText(keyword: developerData.name)
-            cell.popularLabel.text = String(developerData.games_count)
+            cell!.nameDeveloper.text = String(developerData.name)
+            cell!.nameDeveloper.attributedText = underlineText(keyword: developerData.name)
+            cell!.popularLabel.text = String(developerData.games_count)
             
-            cell.containerCell.layer.cornerRadius = 20
+            cell!.containerCell.layer.cornerRadius = 20
         }
         
-        return cell
+        return cell!
     }
     
     func loadImageData(developers: DeveloperElement, forCell cell : DeveloperCell){

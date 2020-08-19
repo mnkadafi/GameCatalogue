@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XPf-aA-WSy">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favorite Games-->
+        <scene sceneID="2Ok-1B-vJZ">
+            <objects>
+                <viewController storyboardIdentifier="favoriteStoryboard" id="Ijm-zg-I9i" customClass="FavoriteGamesViewController" customModule="GameCatalogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xZu-in-Htz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iP-qZ-Vei">
+                                <rect key="frame" x="0.0" y="140" width="375" height="56"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" text="" placeholder="Search Game" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U6I-ZG-Wuk">
+                                        <rect key="frame" x="16" y="0.0" width="343" height="56"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="U6I-ZG-Wuk" secondAttribute="bottom" id="1BI-B0-u2e"/>
+                                    <constraint firstItem="U6I-ZG-Wuk" firstAttribute="top" secondItem="9iP-qZ-Vei" secondAttribute="top" id="INB-wD-LUY"/>
+                                    <constraint firstAttribute="trailing" secondItem="U6I-ZG-Wuk" secondAttribute="trailing" constant="16" id="aOR-ye-fpN"/>
+                                    <constraint firstItem="U6I-ZG-Wuk" firstAttribute="leading" secondItem="9iP-qZ-Vei" secondAttribute="leading" constant="16" id="x9X-5m-UtB"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaJ-V7-K3D">
+                                <rect key="frame" x="0.0" y="196" width="375" height="533"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SaJ-V7-K3D" firstAttribute="top" secondItem="9iP-qZ-Vei" secondAttribute="bottom" id="10Z-do-IZc"/>
+                            <constraint firstItem="SaJ-V7-K3D" firstAttribute="leading" secondItem="xZu-in-Htz" secondAttribute="leading" id="6xI-sd-3Rc"/>
+                            <constraint firstItem="jIa-24-uHN" firstAttribute="bottom" secondItem="SaJ-V7-K3D" secondAttribute="bottom" id="C46-o1-7iP"/>
+                            <constraint firstAttribute="trailing" secondItem="SaJ-V7-K3D" secondAttribute="trailing" id="QDz-eg-wvB"/>
+                            <constraint firstItem="9iP-qZ-Vei" firstAttribute="trailing" secondItem="jIa-24-uHN" secondAttribute="trailing" id="a5z-te-ejd"/>
+                            <constraint firstItem="9iP-qZ-Vei" firstAttribute="top" secondItem="jIa-24-uHN" secondAttribute="top" id="vmt-AR-fQB"/>
+                            <constraint firstItem="9iP-qZ-Vei" firstAttribute="leading" secondItem="jIa-24-uHN" secondAttribute="leading" id="wGy-yk-7BI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jIa-24-uHN"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star.fill" catalog="system" id="4R7-hH-vzy"/>
+                    <navigationItem key="navigationItem" title="Favorite Games" id="97P-YW-ulk"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBarFavorite" destination="U6I-ZG-Wuk" id="My9-fc-HqR"/>
+                        <outlet property="tableFavorite" destination="SaJ-V7-K3D" id="bVZ-Jn-Xe5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nwG-Df-wuQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5353.6231884057979" y="977.67857142857133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JtW-Xs-SaP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XPf-aA-WSy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bz0-ER-H4N">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ijm-zg-I9i" kind="relationship" relationship="rootViewController" id="ADm-BK-iG1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Mk-xn-dWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4443.4782608695659" y="977.67857142857133"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+    </resources>
+</document>
