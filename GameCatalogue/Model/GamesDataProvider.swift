@@ -44,7 +44,7 @@ class GamesDataProvider{
                 let results = try taskContext.fetch(fetchRequest)
                 var favorites : [FavoriteGameModel] = []
                 for result in results{
-                    let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? Int, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? String)
+                    let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? String, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? String)
                     favorites.append(favoriteData)
                 }
                 completion(favorites)

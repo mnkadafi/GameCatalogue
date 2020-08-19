@@ -88,8 +88,8 @@ class DetailViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.titleLabel.text = game.name_original
-                self.ratingLabel.text = String("Rating \(game.rating!)")
-                self.metacriticLabel.text = String("Metacritic \(game.metacritic!)")
+                self.ratingLabel.text = String("\(game.rating!)")
+                self.metacriticLabel.text = String("\(game.metacritic!)")
                 self.descriptionLabel.text = game.description!.withoutHtml
                 self.releaseDateLabel.text = game.released!
                 self.platformsLabel.text = platforms!.joined(separator: ", ")
@@ -112,10 +112,16 @@ class DetailViewController: UIViewController {
             }
 
         }else if let favorite = favorite {
-            print(idFavorite!)
+            print(favorite.metacritic as Any)
             DispatchQueue.main.async {
                 self.gameImage.image = UIImage(data: favorite.background_image!)
                 self.titleLabel.text = favorite.name_original
+                self.ratingLabel.text = favorite.rating
+                self.metacriticLabel.text = favorite.metacritic
+                self.descriptionLabel.text = favorite.description
+                self.releaseDateLabel.text = favorite.released
+                self.websiteLabel.text = favorite.website
+                
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_favorite_black_24pt"), style: .plain, target: self, action: #selector(self.removeFavorite))
             }
         }
@@ -156,6 +162,13 @@ class DetailViewController: UIViewController {
     @objc func addFavorite(){
         let image = self.gameImage.image
         let imageGame = image?.pngData() as NSData?
+        
+        print(idGame!)
+        print(self.ratingLabel.text as Any)
+        print(self.titleLabel.text as Any)
+        print(self.descriptionLabel.text as Any)
+        print(self.releaseDateLabel.text as Any)
+        print(self.metacriticLabel.text as Any)
         
         favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!) {
             DispatchQueue.main.async {

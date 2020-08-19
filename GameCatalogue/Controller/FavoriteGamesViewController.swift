@@ -54,8 +54,8 @@ extension FavoriteGamesViewController: UITableViewDataSource{
             
             cell.imageFavorite.layer.cornerRadius = 20
             cell.imageFavorite.image = UIImage(data: favoriteList.background_image!)
-            cell.titleFavorite.text = favoriteList.name_original
-            cell.releaseDateFavorite.text = favoriteList.released
+            cell.titleFavorite.text = favoriteList.name_original!
+            cell.releaseDateFavorite.text = "Release Date: \(favoriteList.released!)"
             
     //        let genres = favoriteList.genres?.map { (element) -> String in
     //            return element.name
@@ -65,9 +65,9 @@ extension FavoriteGamesViewController: UITableViewDataSource{
     //            return element.platform.name
     //        }
             
-            cell.genresFavorite.text = String("\(favoriteList.id)")
-            cell.ratingFavorite.text = favoriteList.rating
-            cell.platformFavorite.text = "Platform Data"
+            cell.genresFavorite.text = "Genres: Example"
+            cell.ratingFavorite.text = favoriteList.rating!
+            cell.platformFavorite.text = "Platform Data: Example"
             
             return cell
         }else{

@@ -12,7 +12,7 @@ struct FavoriteGameModel : Codable {
     var id : Int?
     var name_original : String?
     var description : String?
-    var metacritic : Int?
+    var metacritic : String?
     var released : String?
     var background_image : Data?
     var website : String?
