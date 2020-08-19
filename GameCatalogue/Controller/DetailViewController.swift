@@ -53,15 +53,12 @@ class DetailViewController: UIViewController {
     }
     
     func getGameDetail(){
-        RawgServiceAPI.getDetailGames(id: idGame!) { (error, game) in
-            guard let game = game else{
-                return
-            }
-            
-            self.detailView(game: game, favorite: nil)
-        }
         
-        if game == nil{
+        if idGame != 0{
+            RawgServiceAPI.getDetailGames(id: idGame!) { (error, game) in
+                self.detailView(game: game, favorite: nil)
+            }
+        }else{
             self.detailView(game: nil, favorite: favorite)
         }
     }
