@@ -399,7 +399,7 @@
                         <viewLayoutGuide key="safeArea" id="rON-ak-IHc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail Game" largeTitleDisplayMode="never" id="c3P-7d-ffx">
-                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="6mS-iZ-XpV">
+                        <barButtonItem key="rightBarButtonItem" id="6mS-iZ-XpV">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addFavoriteAction:" destination="Oiw-Fi-grO" id="M6K-w8-Bsn"/>
@@ -444,7 +444,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
     </resources>
 </document>

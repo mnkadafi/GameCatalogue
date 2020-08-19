@@ -65,7 +65,7 @@ extension FavoriteGamesViewController: UITableViewDataSource{
     //            return element.platform.name
     //        }
             
-            cell.genresFavorite.text = "Genres: Example"
+            cell.genresFavorite.text = "\(favoriteList.id!)"
             cell.ratingFavorite.text = favoriteList.rating!
             cell.platformFavorite.text = "Platform Data: Example"
             

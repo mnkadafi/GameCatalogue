@@ -98,7 +98,7 @@ class DetailViewController: UIViewController {
                 self.publisherLabel.text = publishers!.joined(separator: ", ")
                 self.websiteLabel.text = String("\(game.website!)")
             }
-            
+    
             self.favoriteProvider.cekFavorite(idGame!) { (result) in
                 if result == true{
                     DispatchQueue.main.async {
@@ -112,7 +112,6 @@ class DetailViewController: UIViewController {
             }
 
         }else if let favorite = favorite {
-            print(favorite.metacritic as Any)
             DispatchQueue.main.async {
                 self.gameImage.image = UIImage(data: favorite.background_image!)
                 self.titleLabel.text = favorite.name_original
@@ -138,7 +137,7 @@ class DetailViewController: UIViewController {
             do{
                 let imageData = try Data.init(contentsOf: urlImage.background_image!)
                 DispatchQueue.main.async {
-                    self.gameImage.image = UIImage.init(data: imageData)
+                        self.gameImage.image = UIImage.init(data: imageData)
                 }
             }catch{
                 print("Memproses gambar bermasalah : \(error)")
@@ -162,13 +161,6 @@ class DetailViewController: UIViewController {
     @objc func addFavorite(){
         let image = self.gameImage.image
         let imageGame = image?.pngData() as NSData?
-        
-        print(idGame!)
-        print(self.ratingLabel.text as Any)
-        print(self.titleLabel.text as Any)
-        print(self.descriptionLabel.text as Any)
-        print(self.releaseDateLabel.text as Any)
-        print(self.metacriticLabel.text as Any)
         
         favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!) {
             DispatchQueue.main.async {

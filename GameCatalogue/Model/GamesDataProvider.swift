@@ -56,9 +56,12 @@ class GamesDataProvider{
     
     func addFavorite(_ id: Int, _ name_original: String, _ description_game: String, _ metacritic: String, _ released: String, _ background_image: Data, _ website: String, _ rating: String, completion: @escaping() -> ()){
         let taskContext = newTaskContext()
+        print("QW \(id)")
         taskContext.performAndWait {
+            print("OA \(id)")
             if let entity = NSEntityDescription.entity(forEntityName: "FavoriteGames", in: taskContext) {
                 let favorite = NSManagedObject(entity: entity, insertInto: taskContext)
+                print("AW \(id)")
                 favorite.setValue(id, forKeyPath: "id")
                 favorite.setValue(name_original, forKeyPath: "name_original")
                 favorite.setValue(description_game, forKeyPath: "description_game")
