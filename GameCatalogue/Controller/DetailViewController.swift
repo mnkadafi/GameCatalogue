@@ -34,28 +34,11 @@ class DetailViewController: UIViewController {
         getGameDetail()
     }
     
-//    @IBAction func addFavoriteAction(_ sender: Any) {
-//
-//        if let imageGame = self.gameImage.image, let dataImage = imageGame.pngData() as NSData? {
-//            favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, dataImage as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: ){
-//                DispatchQueue.main.async {
-//                    let alert = UIAlertController(title: "Successful", message: "New favorite game has added.", preferredStyle: .alert)
-//
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-//            }
-//        }else{
-//            print(Error.self)
-//        }
-//    }
-    
     func getGameDetail(){
         
         if idGame != 0{
             RawgServiceAPI.getDetailGames(id: idGame!) { (error, game) in
+                self.game = game
                 self.detailView(game: game, favorite: nil)
             }
         }else{
@@ -160,9 +143,8 @@ class DetailViewController: UIViewController {
     @objc func addFavorite(){
         let image = self.gameImage.image
         let imageGame = image?.pngData() as NSData?
-        let listGenre = game.genres!
         
-        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: listGenre) {
+        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: game.genres!) {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Successful", message: "Favorite game has added.", preferredStyle: .alert)
 

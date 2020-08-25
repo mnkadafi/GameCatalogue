@@ -44,6 +44,8 @@ class GamesDataProvider{
                 let results = try taskContext.fetch(fetchRequest)
                 var favorites : [FavoriteGameModel] = []
                 for result in results{
+                    print(result.relgenres?.id as Any)
+                    print(result.relgenres?.name as Any)
                     let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? String, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? String)
                     favorites.append(favoriteData)
                 }
@@ -58,10 +60,18 @@ class GamesDataProvider{
         let taskContext = newTaskContext()
         taskContext.performAndWait {
             
+            var keys = [Int]()
+            var values = [String]()
+            
+            for genres in listGenre {
+                keys.append(genres.id)
+                values.append(genres.name)
+            }
+            
             let genresEntity = NSEntityDescription.entity(forEntityName: "Genres", in: taskContext)
             let genres = NSManagedObject(entity: genresEntity!, insertInto: taskContext)
-            genres.setValue(listGenre, forKey: "id")
-            genres.setValue(listGenre, forKey: "name")
+            genres.setValue(NSSet.init(array: keys), forKey: "id")
+            genres.setValue(NSSet.init(array: values), forKey: "name")
             
             if let entity = NSEntityDescription.entity(forEntityName: "FavoriteGames", in: taskContext) {
                 let favorite = NSManagedObject(entity: entity, insertInto: taskContext)
