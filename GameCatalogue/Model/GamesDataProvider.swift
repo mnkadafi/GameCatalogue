@@ -39,7 +39,7 @@ class GamesDataProvider{
         let taskContext = newTaskContext()
         
         taskContext.perform {
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteGames")
+            let fetchRequest = NSFetchRequest<FavoriteGames>(entityName: "FavoriteGames")
             do{
                 let results = try taskContext.fetch(fetchRequest)
                 var favorites : [FavoriteGameModel] = []
@@ -54,14 +54,17 @@ class GamesDataProvider{
         }
     }
     
-    func addFavorite(_ id: Int, _ name_original: String, _ description_game: String, _ metacritic: String, _ released: String, _ background_image: Data, _ website: String, _ rating: String, completion: @escaping() -> ()){
+    func addFavorite(_ id: Int, _ name_original: String, _ description_game: String, _ metacritic: String, _ released: String, _ background_image: Data, _ website: String, _ rating: String, listGenre: [DetailGenre], completion: @escaping() -> ()){
         let taskContext = newTaskContext()
-        print("QW \(id)")
         taskContext.performAndWait {
-            print("OA \(id)")
+            
+            let genresEntity = NSEntityDescription.entity(forEntityName: "Genres", in: taskContext)
+            let genres = NSManagedObject(entity: genresEntity!, insertInto: taskContext)
+            genres.setValue(listGenre, forKey: "id")
+            genres.setValue(listGenre, forKey: "name")
+            
             if let entity = NSEntityDescription.entity(forEntityName: "FavoriteGames", in: taskContext) {
                 let favorite = NSManagedObject(entity: entity, insertInto: taskContext)
-                print("AW \(id)")
                 favorite.setValue(id, forKeyPath: "id")
                 favorite.setValue(name_original, forKeyPath: "name_original")
                 favorite.setValue(description_game, forKeyPath: "description_game")
@@ -70,13 +73,14 @@ class GamesDataProvider{
                 favorite.setValue(background_image, forKeyPath: "background_image")
                 favorite.setValue(website, forKeyPath: "website")
                 favorite.setValue(rating, forKeyPath: "rating")
-                
-                do {
-                    try taskContext.save()
-                    completion()
-                } catch let error as NSError {
-                    print("Error : \(error)")
-                }
+                favorite.setValue(genres, forKey: "relgenres")
+            }
+            
+            do {
+                try taskContext.save()
+                completion()
+            } catch let error as NSError {
+                print("Error : \(error)")
             }
         }
     }

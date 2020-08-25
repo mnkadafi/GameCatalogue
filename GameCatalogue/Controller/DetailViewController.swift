@@ -34,23 +34,23 @@ class DetailViewController: UIViewController {
         getGameDetail()
     }
     
-    @IBAction func addFavoriteAction(_ sender: Any) {
-
-        if let imageGame = self.gameImage.image, let dataImage = imageGame.pngData() as NSData? {
-            favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, dataImage as Data, self.websiteLabel.text!, self.ratingLabel.text!){
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Successful", message: "New favorite game has added.", preferredStyle: .alert)
-
-                    alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        }else{
-            print(Error.self)
-        }
-    }
+//    @IBAction func addFavoriteAction(_ sender: Any) {
+//
+//        if let imageGame = self.gameImage.image, let dataImage = imageGame.pngData() as NSData? {
+//            favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, dataImage as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: ){
+//                DispatchQueue.main.async {
+//                    let alert = UIAlertController(title: "Successful", message: "New favorite game has added.", preferredStyle: .alert)
+//
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
+//                        self.navigationController?.popViewController(animated: true)
+//                    })
+//                    self.present(alert, animated: true, completion: nil)
+//                }
+//            }
+//        }else{
+//            print(Error.self)
+//        }
+//    }
     
     func getGameDetail(){
         
@@ -64,7 +64,6 @@ class DetailViewController: UIViewController {
     }
     
     func detailView(game: DetailGameModel?, favorite: FavoriteGameModel?){
-        
         if let game = game{
             DispatchQueue.main.async {
                 self.loadImageDetail(urlImage: game)
@@ -161,8 +160,9 @@ class DetailViewController: UIViewController {
     @objc func addFavorite(){
         let image = self.gameImage.image
         let imageGame = image?.pngData() as NSData?
+        let listGenre = game.genres!
         
-        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!) {
+        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: listGenre) {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Successful", message: "Favorite game has added.", preferredStyle: .alert)
 
