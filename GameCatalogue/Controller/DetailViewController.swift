@@ -94,6 +94,7 @@ class DetailViewController: UIViewController {
             }
 
         }else if let favorite = favorite {
+            print(favorite)
             DispatchQueue.main.async {
                 self.gameImage.image = UIImage(data: favorite.background_image!)
                 self.titleLabel.text = favorite.name_original
@@ -102,6 +103,27 @@ class DetailViewController: UIViewController {
                 self.descriptionLabel.text = favorite.description
                 self.releaseDateLabel.text = favorite.released
                 self.websiteLabel.text = favorite.website
+                
+                let platforms = favorite.platforms?.map { (element) -> String in
+                    return element.platform.name
+                }
+                
+                let developers = favorite.developers?.map { (element) -> String in
+                    return element.name
+                }
+                
+                let genres = favorite.genres?.map { (element) -> String in
+                    return element.name
+                }
+                
+                let publishers = favorite.publishers?.map { (element) -> String in
+                    return element.name
+                }
+    
+                self.platformsLabel.text = platforms!.joined(separator: ", ")
+                self.developersLabel.text = developers!.joined(separator: ", ")
+                self.genreLabel.text = genres!.joined(separator: ", ")
+                self.publisherLabel.text = publishers!.joined(separator: ", ")
                 
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_favorite_black_24pt"), style: .plain, target: self, action: #selector(self.removeFavorite))
             }

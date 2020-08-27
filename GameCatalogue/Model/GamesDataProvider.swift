@@ -44,26 +44,28 @@ class GamesDataProvider{
                 let results = try taskContext.fetch(fetchRequest)
                 var favorites : [FavoriteGameModel] = []
                 var genres = [FDetailGenre]()
-                var platforms = [FDetailPlatformElement]()
+                var platformsElement = [FDetailPlatformElement]()
+                let platforms = [FDetailPlatform]()
                 var developers = [FDetailDeveloper]()
                 var publishers = [FDetailPublisher]()
+                
                 for result in results{
+                    
+                    if let dataplatform = result.relplatforms?.allObjects{
+                        for platform in dataplatform as! [Platforms]{
+                            platformsElement.append(FDetailPlatformElement(id: Int(platform.id), name: platform.name!))
+                        }
+                    }
+                    
+                    if let datadeveloper = result.reldevelopers?.allObjects{
+                        for developer in datadeveloper as! [Developers]{
+                            developers.append(FDetailDeveloper(id: Int(developer.id), name: developer.name!))
+                        }
+                    }
                     
                     if let datagenres = result.relgenres?.allObjects{
                         for genre in datagenres as! [Genres]{
                             genres.append(FDetailGenre(id: Int(genre.id), name: genre.name!))
-                        }
-                    }
-
-                    if let dataplatform = result.relplatforms?.allObjects{
-                        for platform in dataplatform as! [Platforms]{
-                            platforms.append(FDetailPlatformElement(id: Int(platform.id), name: platform.name!))
-                        }
-                    }
-
-                    if let datadeveloper = result.reldevelopers?.allObjects{
-                        for developer in datadeveloper as! [Developers]{
-                            developers.append(FDetailDeveloper(id: Int(developer.id), name: developer.name!))
                         }
                     }
 
@@ -73,7 +75,7 @@ class GamesDataProvider{
                         }
                     }
                     
-                    let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? String, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? String)
+                    let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? String, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? String, platforms: platforms, developers: developers, genres: genres, publishers: publishers)
                     
                     favorites.append(favoriteData)
                 }
@@ -99,14 +101,6 @@ class GamesDataProvider{
                 favorite.setValue(website, forKeyPath: "website")
                 favorite.setValue(rating, forKeyPath: "rating")
                 
-                for genre in listGenre {
-                    let genresEntity = NSEntityDescription.entity(forEntityName: "Genres", in: taskContext)
-                    let genres = NSManagedObject(entity: genresEntity!, insertInto: taskContext)
-                    genres.setValue(genre.id, forKey: "id")
-                    genres.setValue(genre.name, forKey: "name")
-                    genres.setValue(favorite, forKey: "favoritegames")
-                }
-                
                 for platform in listPlatform {
                     let platformEntity = NSEntityDescription.entity(forEntityName: "Platforms", in: taskContext)
                     let platforms = NSManagedObject(entity: platformEntity!, insertInto: taskContext)
@@ -121,6 +115,14 @@ class GamesDataProvider{
                     developers.setValue(developer.id, forKey: "id")
                     developers.setValue(developer.name, forKey: "name")
                     developers.setValue(favorite, forKey: "favoritegames")
+                }
+                
+                for genre in listGenre {
+                    let genresEntity = NSEntityDescription.entity(forEntityName: "Genres", in: taskContext)
+                    let genres = NSManagedObject(entity: genresEntity!, insertInto: taskContext)
+                    genres.setValue(genre.id, forKey: "id")
+                    genres.setValue(genre.name, forKey: "name")
+                    genres.setValue(favorite, forKey: "favoritegames")
                 }
                 
                 for publisher in listPublisher {
