@@ -144,7 +144,7 @@ class DetailViewController: UIViewController {
         let image = self.gameImage.image
         let imageGame = image?.pngData() as NSData?
         
-        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: game.genres!) {
+        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: game.genres!, listPlatform: game.platforms!, listDeveloper: game.developers!, listPublisher: game.publishers!) {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Successful", message: "Favorite game has added.", preferredStyle: .alert)
 

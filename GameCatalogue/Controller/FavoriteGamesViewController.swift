@@ -33,6 +33,9 @@ class FavoriteGamesViewController: UIViewController {
                 self.tableFavorite.reloadData()
             }
         }
+//        self.favoriteProvider.deleteAllMember {
+//            print("berhasil")
+//        }
     }
     
     func setupView(){

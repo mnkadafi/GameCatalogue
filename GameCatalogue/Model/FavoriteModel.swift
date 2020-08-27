@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FavoriteGameModel : Codable {
+struct FavoriteGameModel : Codable{
     var id : Int?
     var name_original : String?
     var description : String?
