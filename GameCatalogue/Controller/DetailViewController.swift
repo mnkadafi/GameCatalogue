@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
                 self.genreLabel.text = genres!.joined(separator: ", ")
                 self.developersLabel.text = developers!.joined(separator: ", ")
                 self.publisherLabel.text = publishers!.joined(separator: ", ")
-                self.websiteLabel.text = String("\(game.website!)")
+                self.websiteLabel.text = "\(game.website!)"
             }
     
             self.favoriteProvider.cekFavorite(idGame!) { (result) in
@@ -94,18 +94,17 @@ class DetailViewController: UIViewController {
             }
 
         }else if let favorite = favorite {
-            print(favorite)
             DispatchQueue.main.async {
                 self.gameImage.image = UIImage(data: favorite.background_image!)
                 self.titleLabel.text = favorite.name_original
-                self.ratingLabel.text = favorite.rating
-                self.metacriticLabel.text = favorite.metacritic
-                self.descriptionLabel.text = favorite.description
+                self.ratingLabel.text = "\(favorite.rating ?? 00)"
+                self.metacriticLabel.text = "\(favorite.metacritic ?? 00)"
+                self.descriptionLabel.text = favorite.description?.withoutHtml
                 self.releaseDateLabel.text = favorite.released
-                self.websiteLabel.text = favorite.website
+                self.websiteLabel.text = "\(favorite.website!)"
                 
                 let platforms = favorite.platforms?.map { (element) -> String in
-                    return element.platform.name
+                    return element.name
                 }
                 
                 let developers = favorite.developers?.map { (element) -> String in
@@ -163,13 +162,10 @@ class DetailViewController: UIViewController {
     }
     
     @objc func addFavorite(){
-        let image = self.gameImage.image
-        let imageGame = image?.pngData() as NSData?
-        
-        favoriteProvider.addFavorite(idGame!, self.titleLabel.text!, self.descriptionLabel.text!, self.metacriticLabel.text!, self.releaseDateLabel.text!, imageGame! as Data, self.websiteLabel.text!, self.ratingLabel.text!, listGenre: game.genres!, listPlatform: game.platforms!, listDeveloper: game.developers!, listPublisher: game.publishers!) {
+        favoriteProvider.addFavorite(game!) {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Successful", message: "Favorite game has added.", preferredStyle: .alert)
-
+                
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
                     self.navigationController?.popViewController(animated: true)
                 })

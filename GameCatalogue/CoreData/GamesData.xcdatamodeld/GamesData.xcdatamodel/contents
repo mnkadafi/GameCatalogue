@@ -9,9 +9,9 @@
         <attribute name="background_image" optional="YES" attributeType="Binary"/>
         <attribute name="description_game" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="metacritic" optional="YES" attributeType="String"/>
+        <attribute name="metacritic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name_original" optional="YES" attributeType="String"/>
-        <attribute name="rating" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="released" optional="YES" attributeType="String"/>
         <attribute name="website" optional="YES" attributeType="String"/>
         <relationship name="reldevelopers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Developers" inverseName="favoritegames" inverseEntity="Developers"/>

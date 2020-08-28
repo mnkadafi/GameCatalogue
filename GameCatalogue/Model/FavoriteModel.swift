@@ -12,22 +12,18 @@ struct FavoriteGameModel : Codable{
     var id : Int?
     var name_original : String?
     var description : String?
-    var metacritic : String?
+    var metacritic : Int?
     var released : String?
     var background_image : Data?
     var website : String?
-    var rating : String?
+    var rating : Double?
     var platforms : [FDetailPlatform]?
     var developers : [FDetailDeveloper]?
     var genres : [FDetailGenre]?
     var publishers : [FDetailPublisher]?
 }
 
-struct FDetailPlatform : Codable{
-    var platform : FDetailPlatformElement
-}
-
-struct FDetailPlatformElement : Codable {
+struct FDetailPlatform : Codable {
     var id : Int
     var name : String
 }

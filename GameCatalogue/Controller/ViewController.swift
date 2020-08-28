@@ -87,7 +87,6 @@ extension ViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GamesCell", for: indexPath) as? GamesCell
         
         let game = games[indexPath.row]
-
         loadImageCell(game: game, forCell: cell!)
         
         let platforms = game.platforms!.map { (element) -> String in
