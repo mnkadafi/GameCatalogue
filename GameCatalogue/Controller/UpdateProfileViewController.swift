@@ -27,9 +27,9 @@ class UpdateProfileViewController: UIViewController {
     @IBAction func saveProfile(_ sender: Any) {
         if let name = nameTextField.text, let profession = professionTextField.text{
             if name.isEmpty{
-                textEmpty(name)
+                textEmpty("Name")
             }else if profession.isEmpty{
-                textEmpty(profession)
+                textEmpty("Profession")
             }else{
                 saveProfile(name, profession)
                 
@@ -39,7 +39,6 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func saveProfile(_ name: String, _ profession: String){
-        ProfileModel.stateLogin = true
         ProfileModel.name = name
         ProfileModel.profession = profession
     }

@@ -21,20 +21,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkState()
-        
         imageProfile.layer.cornerRadius = 15
         viewBelajarAkademi.layer.cornerRadius = 10
         viewMemenangkanChallange.layer.cornerRadius = 10
         viewMenghadiriEvent.layer.cornerRadius = 10
-    }
-    
-    func checkState(){
-        if ProfileModel.stateLogin != true{
-            let update = storyboard?.instantiateViewController(withIdentifier: "updateProfileView") as? UpdateProfileViewController
-            self.navigationController?.pushViewController(update!, animated: true)
-            alertInfo()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,12 +36,5 @@ class ProfileViewController: UIViewController {
     
     @IBAction func editProfile(_ sender: Any) {
         self.performSegue(withIdentifier: "moveToEdit", sender: self)
-    }
-    
-    func alertInfo(){
-        let alert = UIAlertController(title: "Alert", message: "You haven't identity. Please fill your identity.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
     }
 }

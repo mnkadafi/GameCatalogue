@@ -9,22 +9,12 @@
 import Foundation
 
 struct ProfileModel{
-    static let stateLoginKey = "state"
     static let nameKey = "name"
     static let professionKey = "profession"
     
-    static var stateLogin : Bool{
-        get{
-            return UserDefaults.standard.bool(forKey: stateLoginKey)
-        }
-        set{
-            UserDefaults.standard.set(newValue, forKey: stateLoginKey)
-        }
-    }
-    
     static var name : String{
         get{
-            return UserDefaults.standard.string(forKey: nameKey) ?? ""
+            return UserDefaults.standard.string(forKey: nameKey) ?? "Mochamad Nurkhayal Kadafi"
         }
         set{
             UserDefaults.standard.set(newValue, forKey: nameKey)
@@ -33,7 +23,7 @@ struct ProfileModel{
     
     static var profession : String{
         get{
-            return UserDefaults.standard.string(forKey: professionKey) ?? ""
+            return UserDefaults.standard.string(forKey: professionKey) ?? "Mahasiswa"
         }
         set{
             UserDefaults.standard.set(newValue, forKey: professionKey)
