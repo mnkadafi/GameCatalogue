@@ -149,12 +149,13 @@ class GamesDataProvider{
         do{
             let results = try taskContext.fetch(fetchRequest)
             var favorites = [FavoriteGameModel]()
-            var genres = [FDetailGenre]()
-            var platforms = [FDetailPlatform]()
-            var developers = [FDetailDeveloper]()
-            var publishers = [FDetailPublisher]()
             
             for result in results{
+                
+                var genres = [FDetailGenre]()
+                var platforms = [FDetailPlatform]()
+                var developers = [FDetailDeveloper]()
+                var publishers = [FDetailPublisher]()
                 
                 if let dataplatform = result.relplatforms?.allObjects{
                     for platform in dataplatform as! [Platforms]{
