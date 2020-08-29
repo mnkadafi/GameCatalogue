@@ -35,52 +35,13 @@ class GamesDataProvider{
         return taskContext
     }
     
-    func getAllMember(completion : @escaping(_ members: [FavoriteGameModel]) -> ()){
+    func getAllFavorite(completion : @escaping(_ favorite: [FavoriteGameModel]) -> ()){
         let taskContext = newTaskContext()
         
         taskContext.perform {
             let fetchRequest = NSFetchRequest<FavoriteGames>(entityName: "FavoriteGames")
-            do{
-                let results = try taskContext.fetch(fetchRequest)
-                var favorites = [FavoriteGameModel]()
-                var genres = [FDetailGenre]()
-                var platforms = [FDetailPlatform]()
-                var developers = [FDetailDeveloper]()
-                var publishers = [FDetailPublisher]()
-                
-                for result in results{
-                    
-                    if let dataplatform = result.relplatforms?.allObjects{
-                        for platform in dataplatform as! [Platforms]{
-                            platforms.append(FDetailPlatform(id: Int(platform.id), name: platform.name!))
-                        }
-                    }
-                    
-                    if let datadeveloper = result.reldevelopers?.allObjects{
-                        for developer in datadeveloper as! [Developers]{
-                            developers.append(FDetailDeveloper(id: Int(developer.id), name: developer.name!))
-                        }
-                    }
-                    
-                    if let datagenres = result.relgenres?.allObjects{
-                        for genre in datagenres as! [Genres]{
-                            genres.append(FDetailGenre(id: Int(genre.id), name: genre.name!))
-                        }
-                    }
-
-                    if let datapublisher = result.relpublishers?.allObjects{
-                        for publisher in datapublisher as! [Publishers]{
-                            publishers.append(FDetailPublisher(id: Int(publisher.id), name: publisher.name!))
-                        }
-                    }
-                    
-                    let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? Int, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? Double, platforms: platforms, developers: developers, genres: genres, publishers: publishers)
-                    
-                    favorites.append(favoriteData)
-                }
+            self.fetchDataFavorite(taskContext: taskContext, fetchRequest: fetchRequest) { (favorites) in
                 completion(favorites)
-            }catch let error as NSError{
-                print("Could not fetch. \(error), \(error.userInfo)")
             }
         }
     }
@@ -108,7 +69,7 @@ class GamesDataProvider{
                         favorite.setValue(dataImage as Data, forKeyPath: "background_image")
                     }
                 }
-                favorite.setValue("\(String(describing: game.website))", forKeyPath: "website")
+                favorite.setValue("\(String(describing: game.website!))", forKeyPath: "website")
                 favorite.setValue(game.rating, forKeyPath: "rating")
                 
                 for platform in game.platforms! as [DetailPlatform] {
@@ -177,50 +138,56 @@ class GamesDataProvider{
         let taskContext = newTaskContext()
         taskContext.perform {
             let fetchRequest = NSFetchRequest<FavoriteGames>(entityName: "FavoriteGames")
-            fetchRequest.predicate = NSPredicate(format: "name_original CONTAINS %@", title)
-            do{
-                let results = try taskContext.fetch(fetchRequest)
-                print(results)
-                var favorites = [FavoriteGameModel]()
-                var genres = [FDetailGenre]()
-                var platforms = [FDetailPlatform]()
-                var developers = [FDetailDeveloper]()
-                var publishers = [FDetailPublisher]()
-                
-                for result in results{
-                    
-                    if let dataplatform = result.relplatforms?.allObjects{
-                        for platform in dataplatform as! [Platforms]{
-                            platforms.append(FDetailPlatform(id: Int(platform.id), name: platform.name!))
-                        }
-                    }
-                    
-                    if let datadeveloper = result.reldevelopers?.allObjects{
-                        for developer in datadeveloper as! [Developers]{
-                            developers.append(FDetailDeveloper(id: Int(developer.id), name: developer.name!))
-                        }
-                    }
-                    
-                    if let datagenres = result.relgenres?.allObjects{
-                        for genre in datagenres as! [Genres]{
-                            genres.append(FDetailGenre(id: Int(genre.id), name: genre.name!))
-                        }
-                    }
-
-                    if let datapublisher = result.relpublishers?.allObjects{
-                        for publisher in datapublisher as! [Publishers]{
-                            publishers.append(FDetailPublisher(id: Int(publisher.id), name: publisher.name!))
-                        }
-                    }
-                    
-                    let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? Int, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? Double, platforms: platforms, developers: developers, genres: genres, publishers: publishers)
-                    
-                    favorites.append(favoriteData)
-                }
+            fetchRequest.predicate = NSPredicate(format: "name_original CONTAINS[c] %@", title)
+            self.fetchDataFavorite(taskContext: taskContext, fetchRequest: fetchRequest) { (favorites) in
                 completion(favorites)
-            }catch let error as NSError{
-                print("Could not fetch. \(error), \(error.userInfo)")
             }
+        }
+    }
+    
+    func fetchDataFavorite(taskContext: NSManagedObjectContext, fetchRequest: NSFetchRequest<FavoriteGames>, completion: @escaping(_ favorite: [FavoriteGameModel]) -> ()){
+        do{
+            let results = try taskContext.fetch(fetchRequest)
+            var favorites = [FavoriteGameModel]()
+            var genres = [FDetailGenre]()
+            var platforms = [FDetailPlatform]()
+            var developers = [FDetailDeveloper]()
+            var publishers = [FDetailPublisher]()
+            
+            for result in results{
+                
+                if let dataplatform = result.relplatforms?.allObjects{
+                    for platform in dataplatform as! [Platforms]{
+                        platforms.append(FDetailPlatform(id: Int(platform.id), name: platform.name!))
+                    }
+                }
+                
+                if let datadeveloper = result.reldevelopers?.allObjects{
+                    for developer in datadeveloper as! [Developers]{
+                        developers.append(FDetailDeveloper(id: Int(developer.id), name: developer.name!))
+                    }
+                }
+                
+                if let datagenres = result.relgenres?.allObjects{
+                    for genre in datagenres as! [Genres]{
+                        genres.append(FDetailGenre(id: Int(genre.id), name: genre.name!))
+                    }
+                }
+                
+                if let datapublisher = result.relpublishers?.allObjects{
+                    for publisher in datapublisher as! [Publishers]{
+                        publishers.append(FDetailPublisher(id: Int(publisher.id), name: publisher.name!))
+                    }
+                }
+                
+                let favoriteData = FavoriteGameModel(id: result.value(forKey: "id") as? Int, name_original: result.value(forKey: "name_original") as? String, description: result.value(forKey: "description_game") as? String, metacritic: result.value(forKey: "metacritic") as? Int, released: result.value(forKey: "released") as? String, background_image: result.value(forKey: "background_image") as? Data, website: result.value(forKey: "website") as? String, rating: result.value(forKey: "rating") as? Double, platforms: platforms, developers: developers, genres: genres, publishers: publishers)
+                
+                favorites.append(favoriteData)
+            }
+            
+            completion(favorites)
+        }catch let error as NSError{
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     

@@ -9,13 +9,13 @@
 import Foundation
 
 struct FavoriteGameModel : Codable{
-    var id : Int?
+    var id: Int!
     var name_original : String?
     var description : String?
     var metacritic : Int?
     var released : String?
     var background_image : Data?
-    var website : String?
+    var website : String!
     var rating : Double?
     var platforms : [FDetailPlatform]?
     var developers : [FDetailDeveloper]?
@@ -38,7 +38,7 @@ struct FDetailGenre : Codable {
     var name : String
 }
 
-struct FDetailPublisher : Codable{
+struct FDetailPublisher : Codable {
     var id : Int
     var name : String
 }

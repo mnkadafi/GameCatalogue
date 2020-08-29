@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Developers" representedClassName="Developers" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="favoritegames" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FavoriteGames" inverseName="reldevelopers" inverseEntity="FavoriteGames"/>
     </entity>
     <entity name="FavoriteGames" representedClassName="FavoriteGames" syncable="YES" codeGenerationType="class">
         <attribute name="background_image" optional="YES" attributeType="Binary"/>
         <attribute name="description_game" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="metacritic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name_original" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -17,20 +17,20 @@
         <relationship name="reldevelopers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Developers" inverseName="favoritegames" inverseEntity="Developers"/>
         <relationship name="relgenres" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Genres" inverseName="favoritegames" inverseEntity="Genres"/>
         <relationship name="relplatforms" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Platforms" inverseName="favoritegames" inverseEntity="Platforms"/>
-        <relationship name="relpublishers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Publishers" inverseName="favoritegames" inverseEntity="Publishers"/>
+        <relationship name="relpublishers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Publishers" inverseName="favoritegames" inverseEntity="Publishers"/>
     </entity>
     <entity name="Genres" representedClassName="Genres" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="favoritegames" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FavoriteGames" inverseName="relgenres" inverseEntity="FavoriteGames"/>
     </entity>
     <entity name="Platforms" representedClassName="Platforms" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="favoritegames" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FavoriteGames" inverseName="relplatforms" inverseEntity="FavoriteGames"/>
     </entity>
     <entity name="Publishers" representedClassName="Publishers" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="favoritegames" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FavoriteGames" inverseName="relpublishers" inverseEntity="FavoriteGames"/>
     </entity>

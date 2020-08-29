@@ -34,7 +34,7 @@ class FavoriteGamesViewController: UIViewController {
     }
     
     func loadFavoriteGames(){
-        self.favoriteProvider.getAllMember { (results) in
+        self.favoriteProvider.getAllFavorite { (results) in
             DispatchQueue.main.async {
                 self.favorite = results
                 self.tableFavorite.reloadData()
@@ -76,7 +76,7 @@ extension FavoriteGamesViewController: UISearchBarDelegate{
         searchBar.text = ""
         if searchBar.text != nil{
             self.setLoadingScreen()
-            favoriteProvider.getAllMember { (favorites) in
+            favoriteProvider.getAllFavorite { (favorites) in
                 self.favorite = favorites
             }
         }
@@ -91,7 +91,6 @@ extension FavoriteGamesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell {
             let favoriteList = favorite[indexPath.row]
-            print(favoriteList)
             cell.imageFavorite.layer.cornerRadius = 20
             cell.imageFavorite.image = UIImage(data: favoriteList.background_image!)
             cell.titleFavorite.text = favoriteList.name_original!

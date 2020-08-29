@@ -101,7 +101,7 @@ class DetailViewController: UIViewController {
                 self.metacriticLabel.text = "\(favorite.metacritic ?? 00)"
                 self.descriptionLabel.text = favorite.description?.withoutHtml
                 self.releaseDateLabel.text = favorite.released
-                self.websiteLabel.text = "\(favorite.website!)"
+                self.websiteLabel.text = favorite.website
                 
                 let platforms = favorite.platforms?.map { (element) -> String in
                     return element.name
@@ -114,14 +114,14 @@ class DetailViewController: UIViewController {
                 let genres = favorite.genres?.map { (element) -> String in
                     return element.name
                 }
-                
+               
                 let publishers = favorite.publishers?.map { (element) -> String in
                     return element.name
                 }
     
                 self.platformsLabel.text = platforms!.joined(separator: ", ")
                 self.developersLabel.text = developers!.joined(separator: ", ")
-                self.genreLabel.text = genres!.joined(separator: ", ")
+                self.genreLabel.text = genres?.joined(separator: ", ")
                 self.publisherLabel.text = publishers!.joined(separator: ", ")
                 
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_favorite_black_24pt"), style: .plain, target: self, action: #selector(self.removeFavorite))
