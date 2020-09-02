@@ -16,7 +16,6 @@ class DeveloperCell: UICollectionViewCell {
     @IBOutlet weak var popularLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

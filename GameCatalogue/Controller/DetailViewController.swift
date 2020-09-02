@@ -143,7 +143,7 @@ class DetailViewController: UIViewController {
                         self.gameImage.image = UIImage.init(data: imageData)
                 }
             }catch{
-                print("Memproses gambar bermasalah : \(error)")
+                print("Cannot process image : \(error)")
             }
         }
     }
